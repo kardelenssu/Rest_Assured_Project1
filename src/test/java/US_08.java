@@ -34,9 +34,6 @@ public class US_08 {
                 .log().body()
                 .statusCode(200)
                 .body("status_message",equalTo("The item/record was deleted successfully."));
-
-
-
     }
 
     @Test
