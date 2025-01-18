@@ -12,24 +12,13 @@ import java.util.Map;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
-public class US_07 {
+public class US_07 extends Setup{
 
-    RequestSpecification requestSpecification;
-
-    @BeforeClass
-    public void setUp(){
-
-        baseURI="https://api.themoviedb.org/3/";
-        requestSpecification=new RequestSpecBuilder()
-                .addHeader("Authorization ","Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYjk2ODFkNTYzOTVhMGM1N2U4MGM5NzNlMTQ5YTdiMSIsIm5iZiI6MTczMjE5NDczNC41NzY4NzU0LCJzdWIiOiI2NzM3ODdlN2Q2M2ZlZDU4MjZjZjVhZjIiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.wTDYc46yTOaUm2YlS5LMk2wPU0NDqvKdQdmS1PKerHY")
-                .setContentType(ContentType.JSON)
-                .build();
-    }
 
     @Test
     public void Task16(){
         given()
-                .spec(requestSpecification)
+                .spec(requestSpec)
                 .when()
                 .get("search/keyword?query=lost%20girl&page=1")
 
@@ -48,7 +37,7 @@ public class US_07 {
         map.put("value",8.50);
         String messageControl=
         given()
-                .spec(requestSpecification)
+                .spec(requestSpec)
                 .body(map)
 
                 .when()
